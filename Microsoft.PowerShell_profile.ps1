@@ -6,5 +6,7 @@ Set-Alias curl "C:\curl\bin\CURL.EXE"
 #touchƒRƒ}ƒ“ƒh‚ÌÄŒ»
 function touch()
 {
-  New-Item $args[0] -itemType File
+  foreach ($item in $args) {
+    New-Item $item -itemType File
+  }
 }
