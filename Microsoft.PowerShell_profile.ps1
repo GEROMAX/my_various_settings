@@ -3,13 +3,23 @@
 #curlのエイリアス設定(DL & 配置済みが条件)
 Set-Alias curl "C:\curl\bin\CURL.EXE"
 
-#rubyの短縮
-Set-Alias rb "C:\Ruby25-x64\bin\ruby.exe"
-
 #touchコマンドの再現
-function touch()
-{
+function touch() {
   foreach ($item in $args) {
     New-Item $item -itemType File
+  }
+}
+
+#rubyの短縮
+function rb() {
+  if ($args.Length -le 0) {
+    powershell　-Command  "irb"
+  }
+  else {
+    $cmd = "ruby"
+    foreach ($item in $args) {
+      $cmd += " " + $item
+    }
+    powershell　-Command $cmd
   }
 }
