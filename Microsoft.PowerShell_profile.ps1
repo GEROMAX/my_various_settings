@@ -1,7 +1,10 @@
 #powershellのプロファイルのパスはps上で$profileで確認できる
 
+#Beep音を消す
+Set-PSReadlineOption -BellStyle None
+
 #curlのエイリアス設定(DL & 配置済みが条件)
-Set-Alias curl "C:\curl\bin\CURL.EXE"
+#Set-Alias curl "C:\curl\bin\CURL.EXE"
 
 #touchコマンドの再現
 function touch() {
