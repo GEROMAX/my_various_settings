@@ -13,6 +13,24 @@ function touch() {
   }
 }
 
+# uniqコマンドの再現
+function uniq() {
+  begin {
+    $lines = @()
+  }
+  process {
+    if ($lines.Length -eq 0) {
+      $lines += $_
+    }
+    elseif ($lines[$lines.Length - 1] -ne $_) {
+      $lines += $_
+    }
+  }
+  end {
+    Write-Output $lines
+  }
+}
+
 # PSのエンコードをASCIIへ変更
 function chencascii() {
   Set-Variable -Name "OutputEncoding" -Value ([Text.Encoding]::Ascii) -Scope global
